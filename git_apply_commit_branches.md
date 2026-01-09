@@ -100,3 +100,41 @@ git commit -m "msg" # lo guardás en el historial
 Regla de oro
 
 Git siempre ve los cambios. git add solo decide cuáles van al commit.
+
+
+git add . vs git add -u
+🟢 git add .
+
+Agrega TODO al stage:
+
+archivos modificados
+
+archivos nuevos
+
+archivos borrados
+
+git add .
+
+
+⚠️ Riesgo: podés stagear cosas que no querías (ej. patches, outputs, archivos temporales).
+
+🟡 git add -u
+
+Agrega solo archivos ya trackeados
+
+Incluye:
+
+modificaciones
+
+borrados
+
+❌ NO incluye archivos nuevos
+
+git add -u
+
+
+✔ Ideal cuando:
+
+solo querés commitear cambios en código existente
+
+no querés subir archivos nuevos por error
