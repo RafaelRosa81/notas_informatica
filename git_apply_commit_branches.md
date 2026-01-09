@@ -63,3 +63,40 @@ Resumen
 
 ✅ Patch aplicado y commiteado en pr-7-excel-area-config
 ❌ main local NO cambia hasta que hagas merge (PR o merge local)
+
+
+
+✅Git detecta automáticamente cuando editás un archivo local y te lo indica con:
+
+git status
+
+
+Verás algo como:
+
+modified: archivo.py
+
+
+👉 Esto NO depende de git add.
+
+¿Qué hace realmente git add?
+
+NO hace que Git “empiece a mirar” el archivo
+
+SÍ marca el archivo para que entre en el próximo commit (lo “stagea”)
+
+Conceptos clave (en una tabla mental)
+Estado del archivo	Qué significa
+tracked	Git ya lo conoce (está en algún commit previo)
+modified	Cambiaste el archivo localmente
+staged (git add)	El cambio está listo para commitear
+untracked	Git no lo conoce todavía
+Flujo típico
+# editás un archivo
+git status          # Git ve el cambio
+
+git add archivo.py  # preparás el cambio
+git commit -m "msg" # lo guardás en el historial
+
+Regla de oro
+
+Git siempre ve los cambios. git add solo decide cuáles van al commit.
