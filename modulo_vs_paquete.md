@@ -23,18 +23,35 @@ Por eso esto siempre funciona:
 import numpy
 ```
 
+¿Dónde entran los “paquetes instalados”?
+
+Los paquetes de requirements.txt viven en otro lugar:
+```bash
+envs/spatial_analysis/
+└─ Lib/site-packages/
+   ├─ numpy/
+   ├─ rasterio/
+   ├─ pandas/
+   └─ ...
+``` 
 sin importar desde dónde ejecutes el script.
 
 🔹 Paquete local (tu caso: raster_compare)
 Tu estructura es algo así:
 ```bash
-spatial_analysis/
-├─ raster_compare/
+spatial_analysis/        ← RAÍZ DEL PROYECTO
+│
+├─ raster_compare/       ← TU CÓDIGO (NO instalado)
 │  ├─ __init__.py
 │  ├─ core.py
 │  └─ report.py
+│
 ├─ scripts/
+│  ├─ compare_rasters.py
 │  └─ run_from_config.py
+│
+└─ config/
+   └─ example_config.yml
 ```
 
 👉 raster_compare no está instalado en el entorno
@@ -182,4 +199,14 @@ Para tu caso (análisis GIS, scripts, QGIS):
 ```bash
 python -m scripts.run_from_config --config config/example_config.yml
 ```
-Y no cambies nada más.
+
+9️⃣ Conclusiones
+Tres soluciones posibles (solo una necesitás)
+SOLUCIÓN A  Ejecutar como módulo (-m)   ← la que ya usaste
+SOLUCIÓN B  Instalar el proyecto (pip -e .)
+SOLUCIÓN C  Hackear sys.path (NO recomendada)
+
+✅ Regla mental simple (para siempre)
+
+Si el código es tuyo y está dentro del proyecto → usar python -m
+Si el código es de terceros → se instala (pip / conda)
